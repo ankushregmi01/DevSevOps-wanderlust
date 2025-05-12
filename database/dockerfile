@@ -1,0 +1,7 @@
+FORM mongo
+
+WORKDIR mongo
+
+COPY . .
+
+ENTRYPOINT ["mongo"]
