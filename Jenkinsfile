@@ -21,13 +21,12 @@ pipeline {
                 }
             }
         }
-        // Uncomment and fix if using OWASP Dependency Check
-        // stage("OWASP DP") {
-        //     steps {
-        //         dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
-        //         dependencyCheckPublisher pattern: "**/dependency-check-report.xml"
-        //     }
-        // }
+        stage("OWASP DP") {
+            steps {
+                dependencyCheck additionalArguments: '--scan ./', odcInstallation: 'DP'
+                dependencyCheckPublisher pattern: "**/dependency-check-report.xml"
+            }
+        }
         stage("Sonar Quality Gate Scan") {
             steps {
                 timeout(time: 4, unit: "MINUTES") {
